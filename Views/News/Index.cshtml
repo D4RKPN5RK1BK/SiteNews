@@ -1,0 +1,56 @@
+﻿@using SiteNews.ViewModels
+@using SiteNews.sakila
+@model NewsViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <a href="#" class="btn btn-success d-block mb-3">Создать новость</a>
+        <div class="card">
+            <div class="card-header">
+                Поиск
+            </div>
+            <div class="card-body">
+
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+        <table class="table table-bordered">
+            <tr>
+                <td>Мета</td>
+                <td>Название</td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (News n in Model.Elements)
+            {
+                <tr>
+                    <td></td>
+                    <td>@n.NameLong</td>
+                    <td><a href="#" class="btn btn-warning">Опубликовать</a></td>
+                    <td><a href="#" class="btn btn-primary">Редактировать</a></td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
