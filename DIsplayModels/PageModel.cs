@@ -7,14 +7,14 @@ namespace SiteNews.DisplayModels {
         public int PageSize;
 
         public PageModel() {
-            CurrentPage = 0;
+            CurrentPage = 1;
             FirstPage = 1;
             LastPage = 1;
             TotalCount = 0;
             PageSize = 0;
         }
 
-        public PageModel(int size, int count, int current) {
+        public PageModel(int count, int current = 1, int size = 20) {
             PageSize = size;
             TotalCount = count;
             CurrentPage = current;
@@ -22,11 +22,11 @@ namespace SiteNews.DisplayModels {
             LastPage = (int)MathF.Ceiling(count / size);
         }
 
-        public bool HavePreviousPage() => CurrentPage > FirstPage;
-        public bool HaveNextPage() => CurrentPage < LastPage;
+        public bool HavePreviousPage { get => CurrentPage > FirstPage; }
+        public bool HaveNextPage { get => CurrentPage < LastPage; }
 
-        public int Skip() {
-            return 1;
+        public int SkipTo() {
+            return (CurrentPage - 1) * PageSize;
         }
     }
 }

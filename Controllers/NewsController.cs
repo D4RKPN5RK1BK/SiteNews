@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SiteNews.DisplayModels;
 using SiteNews.FilterModels;
 using SiteNews.sakila;
 using SiteNews.SortModels;
@@ -16,14 +17,16 @@ namespace SiteNews.Controllers
         }
 
         // GET: NewsController
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var model = new NewsViewModel();
-            model.Filter = new NewsFilterModel();
-            model.Sort = new NewsSortModel();
-            model.Elements = new List<News>();
+            NewsViewModel model = new NewsViewModel() {
+              Filter = new NewsFilterModel(),
+              Sort = new NewsSortModel(),
+              Display = new PageModel(_context.News.Count(), page),
+              Elements = new List<News>()
+            };
 
-            model.Elements = _context.News.Where(model.Filter.FilterPredicate).Skip(0).Take(20).ToList();
+            model.Elements = _context.News.Where(model.Filter.FilterPredicate).Skip(model.Display.SkipTo()).Take(model.Display.PageSize).ToList();
             return View(model);
         }
 

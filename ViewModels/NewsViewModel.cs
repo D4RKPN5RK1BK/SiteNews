@@ -9,7 +9,7 @@ namespace SiteNews.ViewModels
     {
         public NewsSortModel Sort;
         public NewsFilterModel Filter;
-        public PageModel Page;
+        public PageModel Display;
         public List<News> Elements;
     }
 }
