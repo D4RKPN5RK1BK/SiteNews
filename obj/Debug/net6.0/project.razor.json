@@ -12050,6 +12050,50 @@
         }
       },
       {
+        "HashCode": -700527515,
+        "Kind": "ITagHelper",
+        "Name": "SiteNews.TagHelpers.FilterPageLinkHelper",
+        "AssemblyName": "SiteNews",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "filter-page-link-helper"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "ITagHelper",
+            "Name": "page-view-model",
+            "TypeName": "SiteNews.DisplayModels.PageModel",
+            "Metadata": {
+              "Common.PropertyName": "PageViewModel"
+            }
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "page-action",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "PageAction"
+            }
+          },
+          {
+            "Kind": "ITagHelper",
+            "Name": "page-url-values",
+            "TypeName": "System.Collections.Generic.Dictionary<System.String, System.Object>",
+            "IndexerNamePrefix": "page-url-",
+            "IndexerTypeName": "System.Object",
+            "Metadata": {
+              "Common.PropertyName": "PageUrlValues"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "SiteNews.TagHelpers.FilterPageLinkHelper"
+        }
+      },
+      {
         "HashCode": -1659105719,
         "Kind": "ITagHelper",
         "Name": "SiteNews.TagHelpers.PageLinkTagHelper",
@@ -16354,6 +16398,11 @@
     {
       "FilePath": "c:\\Users\\cb_2601\\Documents\\Repos\\SiteNews\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cb_2601\\Documents\\Repos\\SiteNews\\Views\\News\\Create.cshtml",
+      "TargetPath": "Views\\News\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

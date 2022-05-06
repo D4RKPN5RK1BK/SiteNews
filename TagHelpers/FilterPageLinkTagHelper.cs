@@ -36,26 +36,41 @@ namespace SiteNews.TagHelpers
 				IUrlHelper urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
 				output.TagName = "div";
 
+				int start = PageViewModel.CurrentPage - 4 > 1 ? PageViewModel.CurrentPage - 4 : 1;
+				int end = PageViewModel.CurrentPage + 4 < PageViewModel.LastPage ? PageViewModel.CurrentPage + 4 : PageViewModel.LastPage;
+
 				var tag = new TagBuilder("ul");
 				tag.AddCssClass("pagination");
 				tag.AddCssClass("my-3");
 
-				for (int i = PageViewModel.CurrentPage - 4 > 1 ? PageViewModel.CurrentPage : 1; i <= (PageViewModel.CurrentPage + 4 < PageViewModel.LastPage ? PageViewModel.CurrentPage + 4 : PageViewModel.LastPage); i++)
+				tag.InnerHtml.AppendHtml(CreateTag(1, urlHelper, "Начло"));
+
+				if(PageViewModel.HavePreviousPage)
+					tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.CurrentPage - 1, urlHelper, "Назад"));
+
+				for (int i = start; i <= end; i++)
 				{
 					tag.InnerHtml.AppendHtml(CreateTag(i, urlHelper));
 				}
+
+				if(PageViewModel.HaveNextPage)
+					tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.CurrentPage + 1, urlHelper, "Вперед"));
+				
+				tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.LastPage, urlHelper, "Конец"));
 
 				output.Content.AppendHtml(tag);
 			}
 
 		}
 
-		private TagBuilder CreateTag(int pageNumber, IUrlHelper urlHelper)
+		private TagBuilder CreateTag(int pageNumber, IUrlHelper urlHelper, string text = "")
 		{
+			string tagText = String.IsNullOrEmpty(text) ? pageNumber.ToString() : text;
+
 			TagBuilder item = new TagBuilder("li");
 			TagBuilder link = new TagBuilder("a");
 
-			if (pageNumber == this.PageViewModel.LastPage)
+			if (tagText == this.PageViewModel.CurrentPage.ToString())
 			{
 				item.AddCssClass("active");
 			}
@@ -64,9 +79,10 @@ namespace SiteNews.TagHelpers
 				PageUrlValues["page"] = pageNumber;
 				link.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
 			}
+			
 			item.AddCssClass("page-item");
 			link.AddCssClass("page-link");
-			link.InnerHtml.Append(pageNumber.ToString());
+			link.InnerHtml.Append(tagText);
 			item.InnerHtml.AppendHtml(link);
 
 			return item;

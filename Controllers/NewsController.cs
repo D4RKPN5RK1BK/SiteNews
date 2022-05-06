@@ -26,14 +26,21 @@ namespace SiteNews.Controllers
               Elements = new List<News>()
             };
 
-            model.Elements = _context.News.Where(model.Filter.FilterPredicate).Skip(model.Display.SkipTo()).Take(model.Display.PageSize).ToList();
+            model.Elements = _context.News
+                .Where(model.Filter.FilterPredicate)
+                .OrderByDescending(o => o.IdNews)
+                .Skip(model.Display.SkipTo())
+                .Take(model.Display.PageSize)
+                .ToList();
+
             return View(model);
         }
 
         // GET: NewsController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Read(int id)
         {
-            return View();
+            var model = _context.News.First(o => o.IdNews == id);
+            return View(model);
         }
 
         // GET: NewsController/Create
@@ -58,15 +65,16 @@ namespace SiteNews.Controllers
         }
 
         // GET: NewsController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Update(int id)
         {
-            return View();
+            var model = _context.News.First(o => o.IdNews == id);
+            return View(model);
         }
 
         // POST: NewsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Update(int id, IFormCollection collection)
         {
             try
             {
