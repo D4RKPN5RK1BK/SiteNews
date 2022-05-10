@@ -1,3 +1,25 @@
-﻿@{
+﻿@using SiteNews.sakila
+@model News
+@{
     Layout = "_Layout";
 }
+
+<div class="col-lg-8">
+    <div class="row">
+        <div class="col-sm-6">
+            @Model.Data
+        </div>
+        <div class="col-sm-6">
+            @Model.NameCategory
+        </div>
+    </div>
+    <h2>@Model.NameShort</h2>
+    <hr/>
+    <h4>@Model.NameLong</h4>
+    <hr/>
+    @Model.Text
+
+    <form method="POST" asp-controller="News" asp-action="Read">
+
+    </form>
+</div>

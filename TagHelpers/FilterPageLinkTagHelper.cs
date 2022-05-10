@@ -63,7 +63,7 @@ namespace SiteNews.TagHelpers
 
 		}
 
-		private TagBuilder CreateTag(int pageNumber, IUrlHelper urlHelper, string text = "")
+		private TagBuilder CreateTag(int pageNumber, IUrlHelper urlHelper, string text = "", bool active = true, bool current = false)
 		{
 			string tagText = String.IsNullOrEmpty(text) ? pageNumber.ToString() : text;
 
@@ -79,7 +79,7 @@ namespace SiteNews.TagHelpers
 				PageUrlValues["page"] = pageNumber;
 				link.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
 			}
-			
+
 			item.AddCssClass("page-item");
 			link.AddCssClass("page-link");
 			link.InnerHtml.Append(tagText);
