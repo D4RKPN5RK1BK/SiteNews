@@ -37,20 +37,22 @@
             {
                 <tr>
                     <td>
-                        <span class="d-block badge bg-secodery">@n.IdNews</span>
-                        <span class="d-block badge bg-secodery">@n.Data.Date</span>
+                        <p>
+                            <span class="badge bg-secondary">@n.IdNews</span>
+                            <span class="badge bg-secondary">@n.Data.Date</span>
+                        </p>
                     </td>
                     <td><a asp-controller="News" asp-action="Read" asp-route-id="@n.IdNews">@n.NameLong</a></td>
                     <td>
-                        @switch (n.NameCategory)
+                        @switch (n.Public)
                         {
-                            case 0: <a asp-controller="News" asp-action="Confirm" asp-rout-id="@n.IdNews" asp class="btn btn-sm d-block btn-secondery">Опубликовано</a> break;
-                            case 1: <a asp-controller="News" asp-action="Confirm" asp-rout-id="@n.IdNews" class="btn btn-sm d-block btn-warning">На рассмотрении</a> break;
-                            case 2: <a asp-controller="News" asp-action="Confirm" asp-rout-id="@n.IdNews" class="btn btn-sm d-block btn-danger">Отменено</a> break;
-                            default: <a asp-controller="News" asp-action="Confirm" asp-rout-id="@n.IdNews" class="btn btn-sm d-block btn-danger">Отменено</a> break;
+                            case 0: <a asp-controller="News" asp-action="Confirm" asp-route-id="@n.IdNews" asp class="btn btn-sm d-block btn-secondary">Опубликовано</a> break;
+                            case 1: <a asp-controller="News" asp-action="Confirm" asp-route-id="@n.IdNews" class="btn btn-sm d-block btn-warning">На рассмотрении</a> break;
+                            case 2: <a asp-controller="News" asp-action="Confirm" asp-route-id="@n.IdNews" class="btn btn-sm d-block btn-danger">Отменено</a> break;
+                            default: <a asp-controller="News" asp-action="Confirm" asp-route-id="@n.IdNews" class="btn btn-sm d-block btn-danger">Отменено</a> break;
                         }
                         </td>
-                    <td><a asp-controller="News" asp-action="Update" asp-rout-id="@n.IdNews" class="btn btn-sm d-block btn-primary">Редактировать</a></td>
+                    <td><a asp-controller="News" asp-action="Update" asp-route-id="@n.IdNews" class="btn btn-sm d-block btn-primary">Редактировать</a></td>
                 </tr>
             }
 

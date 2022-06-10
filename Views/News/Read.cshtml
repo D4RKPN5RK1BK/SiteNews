@@ -17,10 +17,13 @@
     <hr/>
     <h4>@Model.NameLong</h4>
     <hr/>
-    @Model.Text
-
-    <form method="POST" asp-controller="News" asp-action="Read">
-
-    </form>
+    @Html.Raw(Model.Text)
+    <hr>
+    <div class="my-2">
+        <a asp-controller="News" asp-action="Update" class="btn btn-primary">Обновить</a>
+        <a asp-controller="News" asp-action="Confirm" class="btn btn-secondary">Рассмотрение</a>
+        <a asp-controller="News" asp-action="Index" class="btn btn-link">Вернуться</a>
+    </div>
+    
 </div>
 

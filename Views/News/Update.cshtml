@@ -1,25 +1,42 @@
-﻿@using SiteNews.sakila
-@model News
+﻿@model News
+
 @{
-    Layout = "_Layout";
+	Layout = "_Layout";
 }
 
 <div class="col-lg-8">
-    <div class="row">
-        <div class="col-sm-6">
-            @Model.Data
-        </div>
-        <div class="col-sm-6">
-            @Model.NameCategory
-        </div>
-    </div>
-    <h2>@Model.NameShort</h2>
-    <hr/>
-    <h4>@Model.NameLong</h4>
-    <hr/>
-    @Model.Text
-
-    <form method="POST" asp-controller="News" asp-action="Read">
-
-    </form>
+	<form method="POST" asp-controller="News" asp-action="Update">
+		<div class="row my-2">
+            <input type="hidden" asp-for="IdNews">
+			<div class="col-sm-6">
+				<label for="">Дата</label>
+				<input type="date" class="form-control" asp-for="Data" value='@Model.Data.ToString("yyyy-MM-dd")' required>
+			</div>
+			<div class="col-sm-6">
+				<label for="">Тип</label>
+				<select asp-items="@ViewBag.Categories" asp-for="NameCategory" class="form-select"></select>
+			</div>
+		</div>
+		<div class="my-2">
+			<label for="">Короткое название</label>
+			<input asp-for="NameShort" class="form-control">
+		</div>
+		<div class="my-2">
+			<label for="">Полное название</label>
+			<textarea class="form-control" asp-for="NameLong" cols="30" rows="3"></textarea>
+		</div>
+		<div class="my-2">
+			<label for="">Содержание</label>
+			<textarea id="editor" class="form-control" asp-for="Text" cols="30" rows="10"></textarea>
+		</div>
+		<div class="my-2">
+			<input type="submit" value="Обновить" class="btn btn-primary ">
+			<a asp-controller="News" asp-action="Index" class="btn btn-link ">Вернуться</a>
+		</div>
+	</form>
 </div>
+
+@section Scripts {
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<script src="~/lib/ckeditor/uploader.js"></script>
+}

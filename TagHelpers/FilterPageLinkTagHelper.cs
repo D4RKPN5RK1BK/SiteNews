@@ -44,18 +44,14 @@ namespace SiteNews.TagHelpers
 				tag.AddCssClass("my-3");
 
 				tag.InnerHtml.AppendHtml(CreateTag(1, urlHelper, "Начло"));
-
-				if(PageViewModel.HavePreviousPage)
-					tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.CurrentPage - 1, urlHelper, "Назад"));
+				tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.CurrentPage - 1, urlHelper, "Назад", PageViewModel.HavePreviousPage));	
 
 				for (int i = start; i <= end; i++)
 				{
 					tag.InnerHtml.AppendHtml(CreateTag(i, urlHelper));
 				}
 
-				if(PageViewModel.HaveNextPage)
-					tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.CurrentPage + 1, urlHelper, "Вперед"));
-				
+				tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.CurrentPage + 1, urlHelper, "Вперед", PageViewModel.HaveNextPage));			
 				tag.InnerHtml.AppendHtml(CreateTag(PageViewModel.LastPage, urlHelper, "Конец"));
 
 				output.Content.AppendHtml(tag);
@@ -73,6 +69,10 @@ namespace SiteNews.TagHelpers
 			if (tagText == this.PageViewModel.CurrentPage.ToString())
 			{
 				item.AddCssClass("active");
+			}
+			else if (!active) 
+			{
+				item.AddCssClass("disabled");
 			}
 			else
 			{

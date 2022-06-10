@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SiteNews.DisplayModels;
 using SiteNews.FilterModels;
 using SiteNews.sakila;
@@ -46,65 +47,53 @@ namespace SiteNews.Controllers
         // GET: NewsController/Create
         public ActionResult Create()
         {
-            return View();
+            SelectList model = new SelectList(_context.NewsCategories, "NewsCategoryId", "NewsCategoryName", _context.NewsCategories.First().NewsCategoryId);
+            return View(model);
         }
 
         // POST: NewsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(News model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _context.Add(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: NewsController/Edit/5
         public ActionResult Update(int id)
         {
             var model = _context.News.First(o => o.IdNews == id);
+            ViewBag.Categories = new SelectList(_context.NewsCategories, "NewsCategoryId", "NewsCategoryName", _context.NewsCategories.First().NewsCategoryId);
             return View(model);
         }
 
         // POST: NewsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(int id, IFormCollection collection)
+        public ActionResult Update(News model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            model.Public = 1;
+            _context.Update(model);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: NewsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _context.News.First(o=> o.IdNews == id);
+            return View(model);
         }
 
         // POST: NewsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(News model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _context.News.Remove(model);
+            return RedirectToAction("Index");
         }
     }
 }
