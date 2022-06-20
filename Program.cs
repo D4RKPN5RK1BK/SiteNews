@@ -3,11 +3,11 @@ using SiteNews.sakila;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+string connection = builder.Configuration.GetConnectionString("DefaultDatabase");
 
 // Add services to the container.
 builder.Services.AddDbContext<goreftinskyContext>(
-    options => options.UseMySQL("server=192.168.0.7;user=news_connection;password=bBnlqBf2;database=goreftinsky")
+    options => options.UseMySQL(connection)
 ) ;
 builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
