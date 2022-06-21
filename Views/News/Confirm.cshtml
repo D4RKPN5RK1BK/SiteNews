@@ -1,5 +1,6 @@
 ﻿@using SiteNews.sakila
-@model News
+@using SiteNews.ViewModels
+@model ConfirmViewModel
 @{
     Layout = "_Layout";
 }
@@ -7,23 +8,29 @@
 <div class="col-lg-8">
     <div class="row">
         <div class="col-sm-6">
-            @Model.Data
+            @Model.News.Data
         </div>
         <div class="col-sm-6">
-            @Model.NameCategory
+            @Model.News.NameCategory
         </div>
     </div>
-    <h2>@Model.NameShort</h2>
+    <h2>@Model.News.NameShort</h2>
     <hr/>
-    <h4>@Model.NameLong</h4>
+    <h4>@Model.News.NameLong</h4>
     <hr/>
-    @Html.Raw(Model.Text)
+    @Html.Raw(Model.News.Text)
     <hr>
-    <div class="my-2">
-        <a asp-controller="News" asp-action="Update" class="btn btn-primary">Обновить</a>
-        <a asp-controller="News" asp-action="Confirm" class="btn btn-secondary">Рассмотрение</a>
+    <form asp-controller="News" asp-action="Confirm" method="POST">
+        <input type="hidden" name="Id" value="@Model.News.IdNews">
+        <select name="State" asp-items="@Model.States" class="form-select">
+        </select>
+        <textarea name="Comment" cols="30" rows="3" class="form-control"></textarea>
+        <div class="my-2">
+        <input type="submit" class="btn btn-primary" value="Применить">
         <a asp-controller="News" asp-action="Index" class="btn btn-link">Вернуться</a>
     </div>
+    </form>
+    
     
 </div>
 

@@ -95,5 +95,26 @@ namespace SiteNews.Controllers
             _context.News.Remove(model);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Confirm(int id) {
+             if (_context.News.Any(o => o.IdNews == id)) {
+                ConfirmViewModel model = new ConfirmViewModel();
+                model.News = _context.News.First(o => o.IdNews == id);
+                return View(model);
+            }
+            
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult Confirm(ConfirmForm model) {
+            if (_context.News.Any(o => o.IdNews == model.Id)) {
+                News news = _context.News.First(o => o.IdNews == model.State);
+            }
+            
+            return RedirectToAction("Index");
+
+        }
     }
 }

@@ -2,16 +2,24 @@
 @{
     Layout = "_Layout";
 }
-<form method="post" asp-action="Create">
-    <div class="input-group">
-        <input type="text" class="form-contol"/>
-        <button type="submit" name="createNewsCategoryButton" class="btn btn-success">Создать категорию</button>
+<div class="col-sm-8">
+    <div class="mb-3">
+        <form method="post" asp-action="Create">
+            <div class="input-group">
+                <input type="text" class="form-control"/>
+                <div class="input-group-append">
+                    <button type="submit" name="createNewsCategoryButton" class="btn btn-success ">Создать категорию</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+    
 
-@foreach(NewsCategory nc in Model) {
-    <partial name="Edit" model="nc"/>
-}
+    @foreach(NewsCategory nc in Model) {
+        <partial name="Edit" model="nc"/>
+    }
+</div>
+
 
 @section Scripts {
     <script>

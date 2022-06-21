@@ -3,10 +3,10 @@ using SiteNews.sakila;
 
 namespace SiteNews.Controllers
 {
-    public class CategoryController : Controller
+    public class NewsCategoryController : Controller
     {
         private readonly goreftinskyContext _context;
-        public CategoryController(goreftinskyContext context)
+        public NewsCategoryController(goreftinskyContext context)
         {
             _context = context;
         }
@@ -45,14 +45,14 @@ namespace SiteNews.Controllers
         }
 
         [HttpPut]
-        public IActionResult Edit(NewsCategory model)
+        public IActionResult Edit([FromBody]NewsCategory model)
         {
             if (ModelState.IsValid)
             {
                 _context.Update(model);
                 _context.SaveChanges();
             }
-            return PartialView();
+            return PartialView(model);
         }
 
         [HttpDelete]
