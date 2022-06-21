@@ -68,6 +68,11 @@ namespace SiteNews.sakila
                     .IsRequired()
                     .HasColumnType("longtext")
                     .HasColumnName("text");
+                
+                entity.Property(e => e.DataTime)
+                    .IsRequired()
+                    .HasColumnType("datetime")
+                    .HasColumnName("data_time");
             });
 
             modelBuilder.Entity<NewsCategory>(entity =>

@@ -6,6 +6,7 @@ using SiteNews.FilterModels;
 using SiteNews.sakila;
 using SiteNews.SortModels;
 using SiteNews.ViewModels;
+using System;
 
 namespace SiteNews.Controllers
 {
@@ -56,6 +57,8 @@ namespace SiteNews.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(News model)
         {
+            model.DataTime = DateTime.Now;
+            model.Public = 1;
             _context.Add(model);
             _context.SaveChanges();
             return RedirectToAction("Index");

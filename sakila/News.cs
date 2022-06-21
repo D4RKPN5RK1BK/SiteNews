@@ -9,6 +9,7 @@ namespace SiteNews.sakila
     {
         public short IdNews { get; set; }
         public DateTime Data { get; set; }
+        public DateTime DataTime { get; set; }
         public int NameCategory { get; set; }
         public string NameShort { get; set; }
         public string NameLong { get; set; }
