@@ -5,12 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 string connection = builder.Configuration.GetConnectionString("DefaultDatabase");
 
-// Add services to the container.
+
 builder.Services.AddDbContext<goreftinskyContext>(
     options => options.UseMySQL(connection)
 ) ;
-builder.Services.AddAuthorization();
-builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
