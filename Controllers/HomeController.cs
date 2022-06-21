@@ -8,13 +8,9 @@ namespace SiteNews.Controllers
         // GET: HomeController
         public ActionResult Index()
         {
-            return View();
+            return Redirect("/News/");
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
 
     }
 }

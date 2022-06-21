@@ -6,7 +6,7 @@
     <div class="mb-3">
         <form method="post" asp-action="Create">
             <div class="input-group">
-                <input type="text" class="form-control"/>
+                <input type="text" class="form-control" name="NewsCategoryName"/>
                 <div class="input-group-append">
                     <button type="submit" name="createNewsCategoryButton" class="btn btn-success ">Создать категорию</button>
                 </div>
@@ -26,14 +26,14 @@
         // Асинхронное обновление категорий
         $("body").on("change", "input[name='newsCategoryName']", function () {
             const model = {
-                newCategoryId = $(this).parents("div[name='editNewsCategory']").find("input[name='newsCategoryId']").val(),
-                newCategoryName = $(this).val()
+                newsCategoryId : $(this).parents("div[name='editNewsCategory']").find("input[name='newsCategoryId']").val(),
+                newsCategoryName : $(this).val()
             }
 
             fetch("newsCategory/edit", {
                 method: "PUT",
                 headers: {
-                    "application/json"
+                    "content-type" : "application/json"
                 },
                 body: JSON.stringify(model)
             })

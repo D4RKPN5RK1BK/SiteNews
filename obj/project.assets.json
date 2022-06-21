@@ -11,17 +11,13 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
-      "Google.Protobuf/3.14.0": {
+      "Google.Protobuf/3.19.4": {
         "type": "package",
-        "dependencies": {
-          "System.Memory": "4.5.3",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
-        },
         "compile": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {}
+          "lib/net5.0/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {}
+          "lib/net5.0/Google.Protobuf.dll": {}
         }
       },
       "K4os.Compression.LZ4/1.2.6": {
@@ -261,11 +257,11 @@
           }
         }
       },
-      "MySql.Data/8.0.28": {
+      "MySql.Data/8.0.29": {
         "type": "package",
         "dependencies": {
           "BouncyCastle.NetCore": "1.8.5",
-          "Google.Protobuf": "3.14.0",
+          "Google.Protobuf": "3.19.4",
           "K4os.Compression.LZ4.Streams": "1.2.6",
           "System.Buffers": "4.5.1",
           "System.Configuration.ConfigurationManager": "4.4.1",
@@ -284,12 +280,12 @@
           "lib/net6.0/ZstdNet.dll": {}
         }
       },
-      "MySql.EntityFrameworkCore/6.0.0": {
+      "MySql.EntityFrameworkCore/6.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "6.0.0",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.0",
-          "MySql.Data": "8.0.28"
+          "Microsoft.EntityFrameworkCore": "6.0.1",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.1",
+          "MySql.Data": "8.0.29"
         },
         "compile": {
           "lib/net6.0/MySql.EntityFrameworkCore.dll": {}
@@ -546,18 +542,21 @@
         "lib/xamarinios/BouncyCastle.Crypto.xml"
       ]
     },
-    "Google.Protobuf/3.14.0": {
-      "sha512": "9AkodyGNmLI+wJJPbwpWLmh4BMHoXDQ9+8qvDPhQQi/BNsleqKMBn3OlyLwC6CALwan2kc5+Cenb8fJSITX3nQ==",
+    "Google.Protobuf/3.19.4": {
+      "sha512": "fd07/ykL4O4FhqrZIELm5lmiyOHfdPg9+o+hWr6tcfRdS7tHXnImg/2wtogLzlW2eEmr0J7j6ZrZvaWOLiJbxQ==",
       "type": "package",
-      "path": "google.protobuf/3.14.0",
+      "path": "google.protobuf/3.19.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "google.protobuf.3.14.0.nupkg.sha512",
+        "google.protobuf.3.19.4.nupkg.sha512",
         "google.protobuf.nuspec",
         "lib/net45/Google.Protobuf.dll",
         "lib/net45/Google.Protobuf.pdb",
         "lib/net45/Google.Protobuf.xml",
+        "lib/net5.0/Google.Protobuf.dll",
+        "lib/net5.0/Google.Protobuf.pdb",
+        "lib/net5.0/Google.Protobuf.xml",
         "lib/netstandard1.1/Google.Protobuf.dll",
         "lib/netstandard1.1/Google.Protobuf.pdb",
         "lib/netstandard1.1/Google.Protobuf.xml",
@@ -953,10 +952,10 @@
         "version.txt"
       ]
     },
-    "MySql.Data/8.0.28": {
-      "sha512": "7b699tU9ba0r7SBK7K9snGJB9ulnOdwEXG28kpVvaQSN0hHenfoJ/ADOtdfhcvcn1KStBX8pFK5qIl8scdBL2g==",
+    "MySql.Data/8.0.29": {
+      "sha512": "3I+QUbSDTknNVAWUEr8JEtXU5sk83kofwy79TROew9YMhVQAq39jZwpHQfFNG757JZFGWJ5oa5VA3tZBxJa1jw==",
       "type": "package",
-      "path": "mysql.data/8.0.28",
+      "path": "mysql.data/8.0.29",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -984,20 +983,20 @@
         "lib/netstandard2.1/MySql.Data.xml",
         "lib/netstandard2.1/Ubiety.Dns.Core.dll",
         "lib/netstandard2.1/ZstdNet.dll",
-        "mysql.data.8.0.28.nupkg.sha512",
+        "mysql.data.8.0.29.nupkg.sha512",
         "mysql.data.nuspec"
       ]
     },
-    "MySql.EntityFrameworkCore/6.0.0": {
-      "sha512": "0cH22RxtheOWVbuae83iX/h3f5QxCtrtfXPQGGEhQeO1ypvdqcBBKzPiNBtO68Z+5fs9mx8RQrgS7na/fAey+g==",
+    "MySql.EntityFrameworkCore/6.0.1": {
+      "sha512": "0tXr3gSpOBb0KtTLlBjsQLWW5mk0eCx9SCHOF47O8Rb2Wu1hqiOhC06yBzE8H8d7bXIlqfuN6Iqpgb8OZ/A4kg==",
       "type": "package",
-      "path": "mysql.entityframeworkcore/6.0.0",
+      "path": "mysql.entityframeworkcore/6.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net6.0/MySql.EntityFrameworkCore.dll",
         "lib/net6.0/MySql.EntityFrameworkCore.xml",
-        "mysql.entityframeworkcore.6.0.0.nupkg.sha512",
+        "mysql.entityframeworkcore.6.0.1.nupkg.sha512",
         "mysql.entityframeworkcore.nuspec"
       ]
     },
@@ -1471,29 +1470,36 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "MySql.EntityFrameworkCore >= 6.0.0",
+      "MySql.EntityFrameworkCore >= 6.0.1",
       "pomelo.entityframeworkcore.mysql >= 6.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cb_2601\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cb_2601\\Documents\\Repos\\SiteNews\\SiteNews.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Documents\\Repos\\SiteNews\\SiteNews.csproj",
       "projectName": "SiteNews",
-      "projectPath": "C:\\Users\\cb_2601\\Documents\\Repos\\SiteNews\\SiteNews.csproj",
-      "packagesPath": "C:\\Users\\cb_2601\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cb_2601\\Documents\\Repos\\SiteNews\\obj\\",
+      "projectPath": "C:\\Users\\USER\\Documents\\Repos\\SiteNews\\SiteNews.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER\\Documents\\Repos\\SiteNews\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\cb_2601\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1514,7 +1520,7 @@
         "dependencies": {
           "MySql.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[6.0.0, )"
+            "version": "[6.0.1, )"
           },
           "pomelo.entityframeworkcore.mysql": {
             "target": "Package",
@@ -1539,7 +1545,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
       }
     }
   }

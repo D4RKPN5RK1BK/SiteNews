@@ -56,9 +56,15 @@ namespace SiteNews.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(News model)
         {
-            _context.Add(model);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                model.Public = 1;
+
+                _context.Add(model);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         // GET: NewsController/Edit/5
@@ -110,9 +116,11 @@ namespace SiteNews.Controllers
         [HttpPost]
         public IActionResult Confirm(ConfirmForm model) {
             if (_context.News.Any(o => o.IdNews == model.Id)) {
-                News news = _context.News.First(o => o.IdNews == model.State);
+                News news = _context.News.First(o => o.IdNews == model.Id);
+                news.Public = model.State;
+                _context.Update(news);
+                _context.SaveChanges();
             }
-            
             return RedirectToAction("Index");
 
         }

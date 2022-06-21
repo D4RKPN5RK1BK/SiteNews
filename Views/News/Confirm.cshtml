@@ -22,12 +22,13 @@
     <hr>
     <form asp-controller="News" asp-action="Confirm" method="POST">
         <input type="hidden" name="Id" value="@Model.News.IdNews">
-        <select name="State" asp-items="@Model.States" class="form-select">
+        <select name="State" asp-items="@Model.States" class="form-select mb-2">
         </select>
         <textarea name="Comment" cols="30" rows="3" class="form-control"></textarea>
         <div class="my-2">
         <input type="submit" class="btn btn-primary" value="Применить">
-        <a asp-controller="News" asp-action="Index" class="btn btn-link">Вернуться</a>
+        <a asp-controller="News" asp-action="Update" asp-route-id="@Model.News.IdNews" class="btn btn-link">Редактировать</a>
+        <a asp-controller="News" asp-action="Index" class="btn btn-link">На главную</a>
     </div>
     </form>
     

@@ -65,7 +65,8 @@ namespace SiteNews.sakila
 
             modelBuilder.Entity<NewsCategory>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.NewsCategoryId)
+                    .HasName("news_category_id");
 
                 entity.ToTable("news_category");
 
