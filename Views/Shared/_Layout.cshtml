@@ -8,13 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Редактор новостей</title>
 </head>
 <body>
-    <header>
+    <div class="screen-space">
+        <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">CertManager</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Новости Рефтинского</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,13 +24,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="About">О приложении</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="News" asp-action="Index">Новости</a>
+                            <a class="nav-link text-dark" asp-controller="NewsCategory" asp-action="Index">Категории</a>
                         </li>
                     </ul>
                 </div>
@@ -40,17 +36,19 @@
             @RenderBody()
         </main>
     </div>
+    </div>
+    
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - CertManager - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - Новости оффициального сайта городского округа Рефтинский
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @* <script src="~/lib/ckeditor/ckeditor.js"></script> *@
-    @* <script src="~/lib/ckeditor/uploader.js"></script> *@
+    <script src="~/lib/ckeditor/ckeditor.js"></script> 
+    <script src="~/lib/ckeditor/uploader.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

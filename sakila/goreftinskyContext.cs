@@ -11,20 +11,13 @@ namespace SiteNews.sakila
         public goreftinskyContext(DbContextOptions<goreftinskyContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewsCategory> NewsCategories { get; set; }
         public virtual DbSet<ReceptionAdm> ReceptionAdms { get; set; }
         public virtual DbSet<ReceptionOpal> ReceptionOpals { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseMySQL("server=192.168.0.7;user=news_connection;password=bBnlqBf2;database=goreftinsky");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -77,7 +70,8 @@ namespace SiteNews.sakila
 
             modelBuilder.Entity<NewsCategory>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.NewsCategoryId)
+                    .HasName("news_category_id");
 
                 entity.ToTable("news_category");
 

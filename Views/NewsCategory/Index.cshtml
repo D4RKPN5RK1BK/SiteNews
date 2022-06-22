@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NewsCategory>
+@{
+    Layout = "_Layout";
+}
+<div class="col-sm-8">
+    <div class="mb-3">
+        <form method="post" asp-action="Create">
+            <div class="input-group">
+                <input type="text" class="form-control" name="NewsCategoryName"/>
+                <div class="input-group-append">
+                    <button type="submit" name="createNewsCategoryButton" class="btn btn-success ">Создать категорию</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+
+    @foreach(NewsCategory nc in Model) {
+        <partial name="Edit" model="nc"/>
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        // Асинхронное обновление категорий
+        $("body").on("change", "input[name='newsCategoryName']", function () {
+            const model = {
+                newsCategoryId : $(this).parents("div[name='editNewsCategory']").find("input[name='newsCategoryId']").val(),
+                newsCategoryName : $(this).val()
+            }
+
+            fetch("newsCategory/edit", {
+                method: "PUT",
+                headers: {
+                    "content-type" : "application/json"
+                },
+                body: JSON.stringify(model)
+            })
+                .then(res => res.text)
+                .then(res => {
+                    this.parents("div[name='editNewsCategory']").html(res);
+                });
+        });
+    </script>
+}
